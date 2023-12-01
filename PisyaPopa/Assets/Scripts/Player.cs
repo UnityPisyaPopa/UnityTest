@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Vector2 moveVelocity;
+    public GameObject player;
+    public int HP = 100;
 
     private bool facingRight = true;
 
@@ -38,9 +40,8 @@ public class Player : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
+        Vector2 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
 }
-// popa

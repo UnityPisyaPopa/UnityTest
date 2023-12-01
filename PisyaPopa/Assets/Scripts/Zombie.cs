@@ -1,15 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ZombieController : MonoBehaviour
 {
+    public GameObject zombie;
     public string playerTag = "Player";
-    public float followSpeed = 5;
+    public float followSpeed = 5f;
+    public GameObject player;
+    private bool isFlipped = false;
 
     private bool facingRight = true;
 
     private Transform playerTransform;
+
+    public void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
 
     private void Start()
     {
@@ -31,14 +43,18 @@ public class ZombieController : MonoBehaviour
             Vector3 direction = playerTransform.position - transform.position;
             direction.Normalize();
             transform.position += direction * followSpeed * Time.deltaTime;
+            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
+            {
+                Flip();
+                isFlipped = true;
+            }
+            else if(player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
+            {
+                Flip();
+                isFlipped = false;
+            }
         }
        
     }
-    private void Flip()
-    {
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-    }
+    
 }
