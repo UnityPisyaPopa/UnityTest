@@ -43,3 +43,4 @@ public class Player : MonoBehaviour
         transform.localScale = Scaler;
     }
 }
+// popa
