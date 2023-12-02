@@ -10,6 +10,10 @@ public class ZombieController : MonoBehaviour
     public string playerTag = "Player";
     public float followSpeed = 5f;
 
+    public GameObject player;
+    private bool isFlipped = false;
+
+
     private bool facingRight = true;
 
     private Transform playerTransform;
