@@ -13,10 +13,11 @@ public class Player : MonoBehaviour
     public float thrust = 500f;
 
     private bool facingRight = true;
-
+    public GameObject obj; // герой на нуле
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        obj.GetComponent<Transform>().position = new Vector2(0, 0); // герой на нуле
     }
 
     private void Update()
@@ -48,10 +49,5 @@ public class Player : MonoBehaviour
         Vector2 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        
     }
 }

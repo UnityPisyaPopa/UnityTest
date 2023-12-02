@@ -9,8 +9,6 @@ public class ZombieController : MonoBehaviour
     public GameObject zombie;
     public string playerTag = "Player";
     public float followSpeed = 5f;
-    public GameObject player;
-    private bool isFlipped = false;
 
     private bool facingRight = true;
 
@@ -36,8 +34,8 @@ public class ZombieController : MonoBehaviour
             Debug.LogError("1");
         }
     }
-    // lox pidro
-    public void FixedUpdate()
+   
+    private void FixedUpdate()
     {
         if (playerTransform != null)
         {
