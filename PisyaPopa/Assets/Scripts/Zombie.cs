@@ -5,6 +5,7 @@ using System;
 
 public class ZombieController : MonoBehaviour
 {
+    public int hp = 50;
     public GameObject zombie;
     public string playerTag = "Player";
     public float followSpeed = 5f;
