@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,7 +9,8 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 moveVelocity;
     public GameObject player;
-    public int HP = 100;
+    public int hp = 100;
+    public float thrust = 500f;
 
     private bool facingRight = true;
 
@@ -30,6 +32,9 @@ public class Player : MonoBehaviour
         {
             Flip();
         }
+
+
+        Debug.Log("hello");
     }
 
     private void FixedUpdate()
@@ -43,5 +48,10 @@ public class Player : MonoBehaviour
         Vector2 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        
     }
 }
