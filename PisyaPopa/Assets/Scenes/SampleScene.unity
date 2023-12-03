@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 1302041111}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,6 +684,7 @@ MonoBehaviour:
   player: {fileID: 0}
   hp: 100
   thrust: 500
+  obj: {fileID: 0}
 --- !u!61 &1559351678
 BoxCollider2D:
   m_ObjectHideFlags: 0
