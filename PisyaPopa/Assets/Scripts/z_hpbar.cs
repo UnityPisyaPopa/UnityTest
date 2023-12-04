@@ -12,15 +12,19 @@ public class z_hpbar : MonoBehaviour
 
     [SerializeField] Health z_health;
 
-    private Camera camera;
+    private Camera Camera;
 
     private bool facingRight = true;//
     private bool isFlipped = false;//
-    private Transform playerTransform;//
-    public GameObject player;//
+    private Transform zombieTransform;//
+    public GameObject zombie;//
     public float followSpeed = 0f;//
+    public string zombieTag = "Zombie";//
+    public Transform scale; //
+   
+
+
     public void Flip()//
-        
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
@@ -39,7 +43,7 @@ public class z_hpbar : MonoBehaviour
     private void Awake()
     {
         z_health.HealthChanged += z_OnHealthChanged;
-        camera = Camera.main;
+        Camera = Camera.main;
     }
 
     private void OnDestroy()
@@ -49,17 +53,17 @@ public class z_hpbar : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if (playerTransform != null)
+        if (zombieTransform != null)
         {
-            Vector3 direction = playerTransform.position - transform.position;
+            Vector3 direction = zombieTransform.position - transform.position;
             direction.Normalize();
             transform.position += direction * followSpeed * Time.deltaTime;
-            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
+            if (zombie.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
             {
                 Flip();
                 isFlipped = true;
             }
-            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
+            else if (zombie.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
             {
                 Flip();
                 isFlipped = false;
@@ -71,7 +75,7 @@ public class z_hpbar : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.LookAt(new Vector3(transform.position.x, camera.transform.position.y, camera.transform.position.z));
+        transform.LookAt(new Vector3(transform.position.x, Camera.transform.position.y, Camera.transform.position.z));
         transform.Rotate(0, 180, 0);
     }
 }

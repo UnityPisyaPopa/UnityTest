@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ZombieController : MonoBehaviour
+public class Zombie : MonoBehaviour
 {
     public int hp = 50;
     public GameObject zombie;
