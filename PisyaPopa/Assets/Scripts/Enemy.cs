@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using System;
 
-public class Zombie : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public int hp = 50;
     public GameObject zombie;
@@ -38,7 +38,14 @@ public class Zombie : MonoBehaviour
             Debug.LogError("1");
         }
     }
-   
+
+    private void Update()
+    {
+        if(hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void FixedUpdate()
     {
         if (playerTransform != null)
@@ -51,13 +58,17 @@ public class Zombie : MonoBehaviour
                 Flip();
                 isFlipped = true;
             }
-            else if(player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
+            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
             {
                 Flip();
                 isFlipped = false;
             }
         }
-       
+
     }
-    
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+    }
+
 }
