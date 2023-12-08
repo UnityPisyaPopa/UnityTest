@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +14,12 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     private bool isFlipped = false;
 
+    public float stopTime = 1f;
+    private bool isTouchingPlayer = false;
+    private float stopTimer = 0f;
+
+    public float jumpForce = 5f;
+    private Rigidbody2D rb;
 
     private bool facingRight = true;
 
@@ -28,14 +35,16 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+
         if (player != null)
         {
             playerTransform = player.transform;
         }
         else
         {
-            Debug.LogError("1");
+            
         }
     }
 
@@ -48,7 +57,22 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (playerTransform != null)
+
+        if(isTouchingPlayer)
+        {
+            stopTimer += Time.deltaTime;
+
+            if(stopTimer> stopTime)
+            {
+                stopTimer = 0f;
+                isTouchingPlayer = false;
+                }
+            }
+
+
+
+
+        if (playerTransform != null && isTouchingPlayer == false)
         {
             Vector3 direction = playerTransform.position - transform.position;
             direction.Normalize();
@@ -69,6 +93,15 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = true;
+            // rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
     }
 
 }
