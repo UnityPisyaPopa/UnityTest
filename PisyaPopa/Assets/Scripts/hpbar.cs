@@ -13,15 +13,9 @@ public class hpbar : MonoBehaviour
     [SerializeField] Health health;
 
     private Camera camera;
-    private bool facingRight = true; // test
-    private Vector2 moveInput;//test
-    private void Flip()//
-    {
-        facingRight = !facingRight;
-        Vector2 Scaler = transform.localScale; // test
-        Scaler.x *= -1;
-        transform.localScale = Scaler;//
-    }
+    
+    
+    
 
     private void OnHealthChanged(float valueAsPercantage)
     {
@@ -42,19 +36,7 @@ public class hpbar : MonoBehaviour
         health.HealthChanged -= OnHealthChanged;
 
     }
-    private void Update()//
-    {
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); // test
-
-        if (!facingRight && moveInput.x > 0)
-        {
-            Flip();
-        }
-        else if (facingRight && moveInput.x < 0)
-        {
-            Flip();//
-        }
-    }
+   
 
 
     private void LateUpdate()

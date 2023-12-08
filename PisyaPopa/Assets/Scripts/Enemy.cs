@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] HpBarEnemy healthBar;
+    public int maxHealth = 50;
     public int hp = 50;
     public GameObject zombie;
     public string playerTag = "Player";
@@ -28,17 +30,17 @@ public class Enemy : MonoBehaviour
     private UnityEngine.Object caboom;
     private bool isEnemyLive = true;
 
-    public void Flip()
+
+    private void Awake()
     {
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        healthBar = GetComponentInChildren<HpBarEnemy>();
     }
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthBar.UpdateHealthBar(hp, maxHealth);
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
 
         caboom = Resources.Load("caboom");
@@ -91,12 +93,12 @@ public class Enemy : MonoBehaviour
             Vector3 direction = playerTransform.position - transform.position;
             direction.Normalize();
             transform.position += direction * followSpeed * Time.deltaTime;
-            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
+            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false )
             {
                 Flip();
                 isFlipped = true;
             }
-            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
+            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true )
             {
                 Flip();
                 isFlipped = false;
@@ -107,6 +109,9 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        healthBar.UpdateHealthBar(hp, maxHealth);
+        
+            
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -116,6 +121,15 @@ public class Enemy : MonoBehaviour
             isTouchingPlayer = true;
             // rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+    }
+    public void Flip()
+    {
+       
+            facingRight = !facingRight;
+            Vector3 Scaler = transform.localScale;
+            Scaler.x *= -1;
+            transform.localScale = Scaler;
+       
     }
 
 }
