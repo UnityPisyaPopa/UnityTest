@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour
 
     private Transform playerTransform;
 
+    private UnityEngine.Object caboom;
+    private bool isEnemyLive = true;
+
     public void Flip()
     {
         facingRight = !facingRight;
@@ -38,6 +41,8 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
 
+        caboom = Resources.Load("caboom");
+
         if (player != null)
         {
             playerTransform = player.transform;
@@ -50,11 +55,20 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(hp <= 0)
+        if(hp <= 0 && isEnemyLive == true)
         {
-            Destroy(gameObject);
+            killEnemy();
         }
     }
+
+    private void killEnemy()
+    {
+        GameObject caboomRef = (GameObject)Instantiate(caboom);
+        caboomRef.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Destroy(gameObject);
+        isEnemyLive = false;
+    }
+
     private void FixedUpdate()
     {
 
