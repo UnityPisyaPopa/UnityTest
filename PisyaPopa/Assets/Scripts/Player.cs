@@ -64,5 +64,12 @@ public class Player : MonoBehaviour
         {
             hp -= 10;
         }
+
+        if (collision.gameObject.tag == "Health")
+        {
+            hp += 50;
+            Debug.Log("hp added");
+            Destroy(GameObject.FindGameObjectWithTag("Health"));
+        }
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4942178529466235755}
   - component: {fileID: 1919708190695481102}
+  - component: {fileID: 2748994361233650858}
   m_Layer: 6
   m_Name: Projectile
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2374936272902282124}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.401, y: -0.567, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.8, y: -30.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,3 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2748994361233650858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374936272902282124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52868a4c009b0349bdc57b774a02860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 35
+  lifetime: 0.5
+  distance: 0.5
+  damage: 25
+  whatIsSolid:
+    serializedVersion: 2
+    m_Bits: 64

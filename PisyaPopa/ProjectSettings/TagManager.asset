@@ -7,11 +7,14 @@ TagManager:
   - Zombie
   - Weapon
   - Enemy
+  - RoomSpawnPoint
+  - Rooms
+  - Health
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Solid
