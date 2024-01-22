@@ -10,6 +10,8 @@ TagManager:
   - RoomSpawnPoint
   - Rooms
   - Health
+  - LaserStart
+  - Arrow
   layers:
   - Default
   - TransparentFX
