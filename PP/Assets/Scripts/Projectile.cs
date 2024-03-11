@@ -6,23 +6,25 @@ public class Projectile : MonoBehaviour
     public float lifetime;
     public float distance;
     public int damage;
-    public LayerMask whatIsSolid;
 
     private void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, distance, whatIsSolid);
-        if(hitInfo.collider != null)
-        {
-            if (hitInfo.collider.CompareTag("Enemy"))
-            {
-                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
-            }
-            Destroy(gameObject);
-        }
-        else if(transform.position.x >= 10000 || transform.position.y >= 100000)
+        if ((transform.position.x >= 100 || transform.position.x <= -100) && (transform.position.y >= 100 || transform.position.y <= -100))
         {
             Destroy(gameObject);
         }
         transform.Translate(Vector2.right * velocity * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider != null)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class Eye : MonoBehaviour
     [SerializeField] private float cooldown;
     [SerializeField] private float cooldownTime;
     [SerializeField] private UnityEngine.Transform laserHit;
-    [SerializeField] int damage;
+    [SerializeField] private int damage;
 
     private float distance;
     private bool facingRight = true;
@@ -44,14 +44,14 @@ public class Eye : MonoBehaviour
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, laserHit.position);
 
-        if (hit.collider.CompareTag("Player") && distance < 6f)
+        if (hit.collider.CompareTag("Player") && distance < 5f)
         {
             cooldown -= Time.deltaTime;
 
             if (cooldown <= 0)
             {
                 lineRenderer.enabled = true;
-                player.GetComponent<Player>().hp -= damage;
+                player.GetComponent<Health>().TakeDamage(damage);
                 Debug.Log("Player hit");
                 cooldown = cooldownTime;
             }

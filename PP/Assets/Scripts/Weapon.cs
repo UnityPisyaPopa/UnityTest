@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Camera cam;
+    
     public GameObject projectile;
     public Transform shotPoint;
     private float reload;

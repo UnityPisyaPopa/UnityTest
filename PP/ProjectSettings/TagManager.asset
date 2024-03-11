@@ -12,6 +12,7 @@ TagManager:
   - Health
   - LaserStart
   - Arrow
+  - HP
   layers:
   - Default
   - TransparentFX

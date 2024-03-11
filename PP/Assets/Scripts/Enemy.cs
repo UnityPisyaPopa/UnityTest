@@ -50,16 +50,12 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    public void TakeDamage(int damage)
-    {
-        hp -= damage;
-    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isTouchingPlayer = true;
+            collision.gameObject.GetComponent<Health>().TakeDamage(25);
         }
     }
 

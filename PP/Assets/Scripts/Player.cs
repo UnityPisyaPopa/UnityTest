@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public float jumpForce = 5f;
-    public int hp = 100;
 
     Vector2 movement;
 
@@ -38,8 +36,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position +  movement * moveSpeed * Time.fixedDeltaTime);
-        
-        if(hp <= 0)
+
+        if (gameObject == null)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
@@ -60,16 +58,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Zombie") 
+        if (collision.gameObject.CompareTag("Health"))
         {
-            hp -= 10;
-        }
-
-        if (collision.gameObject.tag == "Health")
-        {
-            hp += 50;
-            Debug.Log("hp added");
-            Destroy(GameObject.FindGameObjectWithTag("Health"));
+            GetComponent<Health>().health += 50;
+            GameObject.FindGameObjectWithTag("HP").GetComponent<Image>().fillAmount += 0.5f;
+            Destroy(collision.gameObject);
         }
     }
 }
