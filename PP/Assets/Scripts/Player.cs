@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
-    public float jumpForce = 5f;
+   
 
     Vector2 movement;
 
