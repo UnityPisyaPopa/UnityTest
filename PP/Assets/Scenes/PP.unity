@@ -2260,7 +2260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 40
-  followSpeed: 4
+  followSpeed: 0
+  sprite1: {fileID: 21300000, guid: f17e9a8b09176c24699cde91426c1359, type: 3}
+  sprite2: {fileID: 21300000, guid: 2e85bb63a18753b43b1d70fe33cf9474, type: 3}
   player: {fileID: 486924330}
   stopTime: 1
 --- !u!61 &1660563732
@@ -2547,7 +2549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &1963346569
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

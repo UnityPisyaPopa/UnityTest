@@ -9,8 +9,9 @@ public class Monster : MonoBehaviour
 {
     public int hp = 70;
     public float followSpeed = 5f;
-    private float chance = 100;
-    
+    public Sprite sprite1;
+    public Sprite sprite2;
+
 
     public GameObject player;
     private bool isFlipped = false;
@@ -18,9 +19,29 @@ public class Monster : MonoBehaviour
     private bool isTouchingPlayer = false;
     private float stopTimer = 0f;
     private bool facingRight = true;
+    private SpriteRenderer spriteRender;
 
-    
-        private void Update()
+    private void Start()
+    {
+        spriteRender = GetComponent<SpriteRenderer>();
+        if (spriteRender == null)
+        {
+            spriteRender.sprite = sprite1;
+        }
+    }
+    public void Change()
+    {
+        if (spriteRender.sprite = sprite1)
+        {
+            spriteRender.sprite = sprite2;
+        }
+        else 
+        {
+            spriteRender.sprite = sprite1;
+        }
+    }
+
+    private void Update()
             {
             if (hp <= 0)
             {
@@ -61,7 +82,11 @@ public class Monster : MonoBehaviour
             {
                 GetComponent<Health>().health += 20;
                 GetComponent<Health>().maxHealth += 20;
+                Change();
             }
+
+        
+
 
         }
         public void Flip()
