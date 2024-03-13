@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -11,6 +12,9 @@ public class Monster : MonoBehaviour
     public float followSpeed = 5f;
     public Sprite sprite1;
     public Sprite sprite2;
+    public Sprite sprite3;
+    private int counter = 0;
+    
 
 
     public GameObject player;
@@ -31,13 +35,13 @@ public class Monster : MonoBehaviour
     }
     public void Change()
     {
-        if (spriteRender.sprite = sprite1)
+        if (spriteRender.sprite == sprite1)
         {
             spriteRender.sprite = sprite2;
         }
-        else 
+        else if (spriteRender.sprite == sprite2)
         {
-            spriteRender.sprite = sprite1;
+            spriteRender.sprite = sprite3;
         }
     }
 
@@ -76,14 +80,18 @@ public class Monster : MonoBehaviour
                     isFlipped = false;
                 }
             }
-        int random = Random.Range(0, 300);
+        int random = Random.Range(0, 400);
 
-            if (random == 52)
-            {
-                GetComponent<Health>().health += 20;
-                GetComponent<Health>().maxHealth += 20;
-                Change();
-            }
+        if (random == 52 && counter != 3)
+        {
+            GetComponent<Health>().health += 40;
+            GetComponent<Health>().maxHealth += 40;
+            Change();
+            counter  ++;
+            followSpeed -= 0.25f;
+        }
+        
+
 
         
 
