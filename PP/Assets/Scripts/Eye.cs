@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Eye : MonoBehaviour
 {
@@ -10,14 +6,13 @@ public class Eye : MonoBehaviour
     [SerializeField] private float followSpeed;
     [SerializeField] private float cooldown;
     [SerializeField] private float cooldownTime;
-    [SerializeField] private UnityEngine.Transform laserHit;
+    [SerializeField] private Transform laserHit;
     [SerializeField] private int damage;
 
     private float distance;
     private bool facingRight = true;
     private bool isFlipped = false;
     private LineRenderer lineRenderer;
-    public int hp = 50;
 
     private void Start()
     {
@@ -26,18 +21,9 @@ public class Eye : MonoBehaviour
         lineRenderer.useWorldSpace = true;
     }
 
-    private void Update()
-    {
-        distance = Vector2.Distance(player.transform.position, transform.position);
-
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void FixedUpdate()
     {
+        distance = Vector2.Distance(player.transform.position, transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position).normalized);
 
         laserHit.position = hit.point;
@@ -52,25 +38,23 @@ public class Eye : MonoBehaviour
             {
                 lineRenderer.enabled = true;
                 player.GetComponent<Health>().TakeDamage(damage);
-                Debug.Log("Player hit");
                 cooldown = cooldownTime;
             }
         }
         else
         {
             lineRenderer.enabled = false;
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
-            
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);           
         }
 
-        if (player.GetComponent<UnityEngine.Transform>() != null)
+        if (player.GetComponent<Transform>() != null)
         {
-            if (player.GetComponent<UnityEngine.Transform>().position.x > transform.position.x && isFlipped == false)
+            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
             {
                 Flip();
                 isFlipped = true;
             }
-            else if (player.GetComponent<UnityEngine.Transform>().position.x < transform.position.x && isFlipped == true)
+            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
             {
                 Flip();
                 isFlipped = false;
@@ -85,19 +69,4 @@ public class Eye : MonoBehaviour
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
-
-    public void TakeDamage(int damage)
-    {
-        hp -= damage;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Arrow"))
-        {
-            hp -= 20;
-        }
-    }
 }
-
-

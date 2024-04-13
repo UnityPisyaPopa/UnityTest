@@ -2,29 +2,61 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    
+    [SerializeField] private Sprite sawedOff;
+    [SerializeField] private Sprite sawedOff_reload;
+
     public GameObject projectile;
     public Transform shotPoint;
+   
+    [SerializeField] private float reloadStart;
+    [SerializeField] private int pelletCount;
+    [SerializeField] private float spreadAngle;
+    [SerializeField] private int shotsCount;
     private float reload;
-    public float reloadStart;
+    private float spreadAngleStart;
+    private float spreadAngleDifference;
 
     void Update()
     {
+        spreadAngleStart = spreadAngle;
+        spreadAngleDifference = -spreadAngle/pelletCount * 2;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        projectile.GetComponent<Transform>().rotation = transform.rotation;
+
 
         if (reload <= 0)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Instantiate(projectile, shotPoint.position, transform.rotation);
-                reload = reloadStart;
+            GetComponent<SpriteRenderer>().sprite = sawedOff;
+            if (Input.GetMouseButtonDown(0) && shotsCount > 0)
+            {                
+                for (int i = 0; i < pelletCount; i++)
+                {
+                    spreadAngle += spreadAngleDifference;
+                    GameObject pellet = Instantiate(projectile, shotPoint.position, transform.rotation);
+                    pellet.transform.Rotate(Vector3.forward, spreadAngle);
+                    pellet.transform.gameObject.tag = "PlayerProjectile";
+                }        
+                spreadAngle = spreadAngleStart;
+                shotsCount--; 
+               
+
+                if (shotsCount == 0)
+                {
+                    reload = reloadStart; 
+                }
             }
         }
         else
         {
+            GetComponent<SpriteRenderer>().sprite = sawedOff_reload;
             reload -= Time.deltaTime;
+            if (reload <= 0)
+            {
+                shotsCount = 2; 
+            }
         }
+
     }
 }

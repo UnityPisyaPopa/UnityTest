@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
@@ -7,10 +7,11 @@ public class CollisionDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(collisionTag) && collisionTag != null)
+        if (collision.gameObject.CompareTag(collisionTag)/* && collisionTag != null)
         {
             Health health = collision.gameObject.GetComponent<Health>();
             health.TakeDamage(collisionDamage);
         }    
     }
 }
+*/

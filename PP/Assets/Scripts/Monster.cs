@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-
-
 
 public class Monster : MonoBehaviour
 {
@@ -20,6 +15,7 @@ public class Monster : MonoBehaviour
     private float stopTimer = 0f;
     private bool facingRight = true;
     private SpriteRenderer spriteRender;
+    private int counter = 0;
 
     private void Start()
     {
@@ -31,7 +27,7 @@ public class Monster : MonoBehaviour
     }
     public void Change()
     {
-        if (spriteRender.sprite = sprite1)
+        if (spriteRender.sprite == sprite1)
         {
             spriteRender.sprite = sprite2;
         }
@@ -42,67 +38,69 @@ public class Monster : MonoBehaviour
     }
 
     private void Update()
-            {
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
-            }
-
-        private void FixedUpdate()
+    {
+        if (hp <= 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
+             Destroy(gameObject);
+        }
+    }
 
-            if (isTouchingPlayer)
-            {
-                stopTimer += Time.deltaTime;
+    private void FixedUpdate()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
 
-                if (stopTimer > stopTime)
-                {
-                    stopTimer = 0f;
-                    isTouchingPlayer = false;
-                }
-            }
-            if (player.GetComponent<UnityEngine.Transform>() != null && isTouchingPlayer == false)
+        if (isTouchingPlayer)
+        {
+            stopTimer += Time.deltaTime;
+
+            if (stopTimer > stopTime)
             {
-                if (player.GetComponent<UnityEngine.Transform>().position.x > transform.position.x && isFlipped == false)
-                {
-                    Flip();
-                    isFlipped = true;
-                }
-                else if (player.GetComponent<UnityEngine.Transform>().position.x < transform.position.x && isFlipped == true)
-                {
-                    Flip();
-                    isFlipped = false;
-                }
+                stopTimer = 0f;
+                isTouchingPlayer = false;
             }
+        }
+        if (player.GetComponent<UnityEngine.Transform>() != null && isTouchingPlayer == false)
+        {
+            if (player.GetComponent<UnityEngine.Transform>().position.x > transform.position.x && isFlipped == false)
+            {
+                Flip();
+                isFlipped = true;
+            }
+            else if (player.GetComponent<UnityEngine.Transform>().position.x < transform.position.x && isFlipped == true)
+            {
+                Flip();
+                isFlipped = false;
+            }
+        }
         int random = Random.Range(0, 300);
 
-            if (random == 52)
-            {
-                GetComponent<Health>().health += 20;
-                GetComponent<Health>().maxHealth += 20;
-                Change();
-            }
+        if (random == 52 && counter !=2)
+        {
+            GetComponent<Health>().health += GetComponent<Health>().health * 1/2;
+            GetComponent<Health>().maxHealth += GetComponent<Health>().maxHealth / 2;
+            followSpeed += followSpeed / 3;
+            Change();
+            counter++;
+        }
 
         
 
 
-        }
-        public void Flip()
+    }
+    public void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            facingRight = !facingRight;
-            Vector3 Scaler = transform.localScale;
-            Scaler.x *= -1;
-            transform.localScale = Scaler;
+            collision.gameObject.GetComponent<Health>().TakeDamage(25);
         }
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                collision.gameObject.GetComponent<Health>().TakeDamage(25);
-            }
-        }
+    }
     
 
 }
