@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &476147226
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -291,8 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   followSpeed: 2
+  damage: 25
   player: {fileID: 486924330}
-  stopTime: 1
 --- !u!114 &476147234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 0.50027585
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -940,7 +940,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.74
+  orthographic size: 6.54
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -996,6 +996,7 @@ GameObject:
   - component: {fileID: 1584314446}
   - component: {fileID: 1584314445}
   - component: {fileID: 1584314444}
+  - component: {fileID: 1584314447}
   m_Layer: 6
   m_Name: Colider
   m_TagString: Untagged
@@ -1569,6 +1570,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &1584314447
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584314442}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1605925965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,12 +1728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee3036766fdbb546bbbdf128466e3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 40
   followSpeed: 3
   sprite1: {fileID: 21300000, guid: f17e9a8b09176c24699cde91426c1359, type: 3}
   sprite2: {fileID: 21300000, guid: 2e85bb63a18753b43b1d70fe33cf9474, type: 3}
   player: {fileID: 486924330}
-  stopTime: 1
 --- !u!50 &1660563733
 Rigidbody2D:
   serializedVersion: 4

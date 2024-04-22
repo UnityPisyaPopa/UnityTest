@@ -1,18 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int hp = 50;
-    public float followSpeed = 5f;
+    [SerializeField] private int hp = 50;
+    [SerializeField] private float followSpeed = 5f;
+    [SerializeField] private int damage;
 
-    public GameObject player;
+    [SerializeField] private GameObject player;
+
     private bool isFlipped = false;
-
-    public float stopTime = 1f;
-    private bool isTouchingPlayer = false;
-    private float stopTimer = 0f;
-
+    private bool isTouchingPlayer = false;  
     private bool facingRight = true;
+    private bool cooldownEnded = true;
 
     private void Update()
     {
@@ -20,21 +20,17 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }   
+
+        if (isTouchingPlayer && cooldownEnded)
+        {        
+            player.GetComponent<Health>().TakeDamage(damage);
+            StartCoroutine(Cooldown());          
+        }
     }
     private void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
 
-        if (isTouchingPlayer)
-        {
-            stopTimer += Time.deltaTime;
-
-            if(stopTimer > stopTime)
-            {
-                stopTimer = 0f;
-                isTouchingPlayer = false;
-            }
-        }
         if (player.GetComponent<Transform>() != null && isTouchingPlayer == false)
         {
             if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
@@ -48,15 +44,29 @@ public class Enemy : MonoBehaviour
                 isFlipped = false;
             }
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(25);
+            isTouchingPlayer = true;
         }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = false;
+        }
+    }
+
+    IEnumerator Cooldown()
+    {
+        cooldownEnded = false;
+        yield return new WaitForSeconds(2);
+        cooldownEnded = true;
     }
 
     public void Flip()
