@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1919708190695481102}
   - component: {fileID: 2748994361233650858}
   - component: {fileID: -842812102353480199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2374936272902282124}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.70060617, w: 0.71354824}
+  m_LocalRotation: {x: -0, y: -0, z: 0.8959519, w: 0.44415104}
   m_LocalPosition: {x: -4.8, y: -30.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

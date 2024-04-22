@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public int hp = 70;
-    public float followSpeed = 5f;
-    public Sprite sprite1;
-    public Sprite sprite2;
+    [SerializeField] private float followSpeed = 5f;
+    [SerializeField] private Sprite sprite1;
+    [SerializeField] private Sprite sprite2;
 
 
-    public GameObject player;
+    [SerializeField] private GameObject player;
     private bool isFlipped = false;
-    public float stopTime = 1f;
-    private bool isTouchingPlayer = false;
-    private float stopTimer = 0f;
+    //[SerializeField] private float stopTime = 1f;
+    private bool isTouchingPlayer;
+    //private float stopTimer = 0f;
     private bool facingRight = true;
     private SpriteRenderer spriteRender;
     private int counter = 0;
@@ -25,7 +24,7 @@ public class Monster : MonoBehaviour
             spriteRender.sprite = sprite1;
         }
     }
-    public void Change()
+    private void Change()
     {
         if (spriteRender.sprite == sprite1)
         {
@@ -37,36 +36,30 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (hp <= 0)
-        {
-             Destroy(gameObject);
-        }
-    }
-
     private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
+        if (isTouchingPlayer == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
+        }
 
-        if (isTouchingPlayer)
+        /*if (isTouchingPlayer)
         {
             stopTimer += Time.deltaTime;
 
             if (stopTimer > stopTime)
             {
                 stopTimer = 0f;
-                isTouchingPlayer = false;
             }
-        }
-        if (player.GetComponent<UnityEngine.Transform>() != null && isTouchingPlayer == false)
+        }*/
+        //if (player.GetComponent<Transform>() != null /*&& isTouchingPlayer == false*/)
         {
-            if (player.GetComponent<UnityEngine.Transform>().position.x > transform.position.x && isFlipped == false)
+            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
             {
                 Flip();
                 isFlipped = true;
             }
-            else if (player.GetComponent<UnityEngine.Transform>().position.x < transform.position.x && isFlipped == true)
+            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
             {
                 Flip();
                 isFlipped = false;
@@ -76,31 +69,36 @@ public class Monster : MonoBehaviour
 
         if (random == 52 && counter !=2)
         {
-            GetComponent<Health>().health += GetComponent<Health>().health * 1/2;
+            GetComponent<Health>().health += GetComponent<Health>().health / 2;
             GetComponent<Health>().maxHealth += GetComponent<Health>().maxHealth / 2;
-            followSpeed += followSpeed / 3;
+            followSpeed += followSpeed / 4;
             Change();
             counter++;
         }
-
-        
-
-
     }
-    public void Flip()
+
+    private void Flip()
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Health>().TakeDamage(25);
+            isTouchingPlayer = true;
         }
     }
-    
 
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isTouchingPlayer = false;
+        }
+    }
 }

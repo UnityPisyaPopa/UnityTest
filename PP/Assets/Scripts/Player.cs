@@ -64,5 +64,5 @@ public class Player : MonoBehaviour
             GameObject.FindGameObjectWithTag("HP").GetComponent<Image>().fillAmount += 0.5f;
             Destroy(collision.gameObject);
         }
-    }
+    }   
 }
