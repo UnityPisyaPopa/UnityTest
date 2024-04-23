@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,9 +8,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private bool facingRight = true;
-    [SerializeField] private GameObject[] doors;
-    
-        
+    [SerializeField] private GameObject doors;
+
+
 
 
     Vector2 movement;
@@ -69,16 +70,11 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("DoorTrigger")) 
+        if (other.CompareTag("DoorTrigger"))
         {
-            CloseDoors(); 
+            doors.SetActive(true);
         }
     }
-    private void CloseDoors()
-    {
-        foreach (GameObject door in doors) 
-        {
-            door.SetActive(true); 
-        }
-    }
+
+
 }

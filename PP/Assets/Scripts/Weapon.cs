@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Sprite sawedOff;
     [SerializeField] private Sprite sawedOff_reload;
+    [SerializeField] private Sprite sawedOff_fire;
 
     public GameObject projectile;
     public Transform shotPoint;
@@ -30,7 +32,8 @@ public class Weapon : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = sawedOff;
             if (Input.GetMouseButtonDown(0) && shotsCount > 0)
-            {                
+            {
+                ShotAnimation();
                 for (int i = 0; i < pelletCount; i++)
                 {
                     spreadAngle += spreadAngleDifference;
@@ -39,8 +42,7 @@ public class Weapon : MonoBehaviour
                     pellet.transform.gameObject.tag = "PlayerProjectile";
                 }        
                 spreadAngle = spreadAngleStart;
-                shotsCount--; 
-               
+                shotsCount--;               
 
                 if (shotsCount == 0)
                 {
@@ -58,5 +60,11 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        IEnumerator ShotAnimation()
+        {
+            GetComponent<SpriteRenderer>().sprite = sawedOff_fire;
+            yield return new WaitForSeconds(0.5f);
+            GetComponent<SpriteRenderer>().sprite = sawedOff;
+        }
     }
 }
