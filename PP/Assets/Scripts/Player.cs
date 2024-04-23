@@ -4,15 +4,17 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public Rigidbody2D rb;
-   
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private bool facingRight = true;
+    [SerializeField] private GameObject[] doors;
+    
+        
+
 
     Vector2 movement;
 
-    private bool facingRight = true;
-
-
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -64,5 +66,19 @@ public class Player : MonoBehaviour
             GameObject.FindGameObjectWithTag("HP").GetComponent<Image>().fillAmount += 0.5f;
             Destroy(collision.gameObject);
         }
-    }   
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("DoorTrigger")) 
+        {
+            CloseDoors(); 
+        }
+    }
+    private void CloseDoors()
+    {
+        foreach (GameObject door in doors) 
+        {
+            door.SetActive(true); 
+        }
+    }
 }

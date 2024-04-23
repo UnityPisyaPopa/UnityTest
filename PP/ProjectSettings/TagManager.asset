@@ -14,7 +14,7 @@ TagManager:
   - Arrow
   - HP
   - PlayerProjectile
-  - TestTrigger
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX
