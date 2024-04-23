@@ -15,6 +15,7 @@ TagManager:
   - HP
   - PlayerProjectile
   - DoorTrigger
+  - CumDoors
   layers:
   - Default
   - TransparentFX
