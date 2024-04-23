@@ -1946,7 +1946,7 @@ MonoBehaviour:
   shotPoint: {fileID: 320283114}
   reloadStart: 3
   pelletCount: 9
-  spreadAngle: 40
+  spreadAngle: 30
   shotsCount: 2
 --- !u!212 &1821206029
 SpriteRenderer:

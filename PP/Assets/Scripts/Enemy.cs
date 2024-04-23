@@ -29,21 +29,21 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
-
-        if (player.GetComponent<Transform>() != null && isTouchingPlayer == false)
+        if (isTouchingPlayer == false)
         {
-            if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
-            {
-                Flip();
-                isFlipped = true;
-            }
-            else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
-            {
-                Flip();
-                isFlipped = false;
-            }
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
         }
+              
+        if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
+        {
+            Flip();
+            isFlipped = true;
+        }
+        else if (player.GetComponent<Transform>().position.x < transform.position.x && isFlipped == true)
+        {
+            Flip();
+            isFlipped = false;
+        }        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
     IEnumerator Cooldown()
     {
         cooldownEnded = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         cooldownEnded = true;
     }
 
