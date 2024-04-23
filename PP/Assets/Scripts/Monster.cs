@@ -9,9 +9,7 @@ public class Monster : MonoBehaviour
 
     [SerializeField] private GameObject player;
     private bool isFlipped = false;
-    //[SerializeField] private float stopTime = 1f;
     private bool isTouchingPlayer;
-    //private float stopTimer = 0f;
     private bool facingRight = true;
     private SpriteRenderer spriteRender;
     private int counter = 0;
@@ -43,16 +41,8 @@ public class Monster : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
         }
 
-        /*if (isTouchingPlayer)
-        {
-            stopTimer += Time.deltaTime;
-
-            if (stopTimer > stopTime)
-            {
-                stopTimer = 0f;
-            }
-        }*/
-        //if (player.GetComponent<Transform>() != null /*&& isTouchingPlayer == false*/)
+       
+        if (player.GetComponent<Transform>() != null)
         {
             if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
             {
@@ -101,4 +91,5 @@ public class Monster : MonoBehaviour
             isTouchingPlayer = false;
         }
     }
+    
 }
