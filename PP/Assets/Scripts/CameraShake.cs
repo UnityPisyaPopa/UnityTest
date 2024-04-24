@@ -1,14 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class CameraShake : MonoBehaviour
 {
-    void Start()
+    IEnumerator Shake(float duration, float magnitude)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        yield return new WaitForSeconds(magnitude);
     }
 }

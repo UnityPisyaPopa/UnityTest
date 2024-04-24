@@ -1,15 +1,13 @@
-using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Sprite sawedOff;
     [SerializeField] private Sprite sawedOff_reload;
-    [SerializeField] private Sprite sawedOff_fire;
 
     public GameObject projectile;
     public Transform shotPoint;
-   
+
     [SerializeField] private float reloadStart;
     [SerializeField] private int pelletCount;
     [SerializeField] private float spreadAngle;
@@ -21,7 +19,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         spreadAngleStart = spreadAngle;
-        spreadAngleDifference = -spreadAngle/pelletCount * 2;
+        spreadAngleDifference = -spreadAngle / pelletCount * 2;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
@@ -33,20 +31,20 @@ public class Weapon : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = sawedOff;
             if (Input.GetMouseButtonDown(0) && shotsCount > 0)
             {
-                ShotAnimation();
                 for (int i = 0; i < pelletCount; i++)
                 {
                     spreadAngle += spreadAngleDifference;
                     GameObject pellet = Instantiate(projectile, shotPoint.position, transform.rotation);
                     pellet.transform.Rotate(Vector3.forward, spreadAngle);
                     pellet.transform.gameObject.tag = "PlayerProjectile";
-                }        
+                }
                 spreadAngle = spreadAngleStart;
-                shotsCount--;               
+                shotsCount--;
+
 
                 if (shotsCount == 0)
                 {
-                    reload = reloadStart; 
+                    reload = reloadStart;
                 }
             }
         }
@@ -56,15 +54,9 @@ public class Weapon : MonoBehaviour
             reload -= Time.deltaTime;
             if (reload <= 0)
             {
-                shotsCount = 2; 
+                shotsCount = 2;
             }
         }
 
-        IEnumerator ShotAnimation()
-        {
-            GetComponent<SpriteRenderer>().sprite = sawedOff_fire;
-            yield return new WaitForSeconds(0.5f);
-            GetComponent<SpriteRenderer>().sprite = sawedOff;
-        }
     }
 }

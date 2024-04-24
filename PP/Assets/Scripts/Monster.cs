@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Monster : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class Monster : MonoBehaviour
 
 
     [SerializeField] private GameObject player;
+    [SerializeField] private float timeToChangeState;
+    [SerializeField] private int damage;
     private bool isFlipped = false;
     private bool isTouchingPlayer;
     private bool facingRight = true;
     private SpriteRenderer spriteRender;
-    private int counter = 0;
+    private bool stateCooldownEnded = true;
+    private bool attackCooldownEnded = true;
+    [SerializeField] private int numberOfStates; 
 
     private void Start()
     {
@@ -20,15 +25,19 @@ public class Monster : MonoBehaviour
         if (spriteRender == null)
         {
             spriteRender.sprite = sprite1;
-        }
+        }      
     }
     private void Change()
     {
+        GetComponent<Health>().health += GetComponent<Health>().maxHealth / 2;
+        GetComponent<Health>().maxHealth += GetComponent<Health>().maxHealth / 2;
+        followSpeed += followSpeed / 4;
+
         if (spriteRender.sprite == sprite1)
         {
             spriteRender.sprite = sprite2;
         }
-        else 
+        else
         {
             spriteRender.sprite = sprite1;
         }
@@ -41,7 +50,12 @@ public class Monster : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);
         }
 
-       
+        if (isTouchingPlayer && attackCooldownEnded)
+        {
+            player.GetComponent<Health>().TakeDamage(damage);
+            StartCoroutine(AttackCooldown());
+        }
+
         if (player.GetComponent<Transform>() != null)
         {
             if (player.GetComponent<Transform>().position.x > transform.position.x && isFlipped == false)
@@ -55,16 +69,19 @@ public class Monster : MonoBehaviour
                 isFlipped = false;
             }
         }
-        int random = Random.Range(0, 300);
 
-        if (random == 52 && counter !=2)
+        if (stateCooldownEnded == true && numberOfStates > 0)
         {
-            GetComponent<Health>().health += GetComponent<Health>().health / 2;
-            GetComponent<Health>().maxHealth += GetComponent<Health>().maxHealth / 2;
-            followSpeed += followSpeed / 4;
-            Change();
-            counter++;
+            StartCoroutine(ChangeState());
+            numberOfStates--;
         }
+
+
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void Flip()
@@ -77,19 +94,32 @@ public class Monster : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(25);
             isTouchingPlayer = true;
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             isTouchingPlayer = false;
         }
     }
-    
+
+    IEnumerator ChangeState()
+    {
+        stateCooldownEnded = false;
+        yield return new WaitForSeconds(timeToChangeState);
+        Change();
+        stateCooldownEnded = true;
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        attackCooldownEnded = false;
+        yield return new WaitForSeconds(1);
+        attackCooldownEnded = true;
+    }
 }

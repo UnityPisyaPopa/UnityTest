@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
     IEnumerator Cooldown()
     {
         cooldownEnded = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1);
         cooldownEnded = true;
     }
 
