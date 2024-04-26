@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,12 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool facingRight = true;
     [SerializeField] private GameObject doors;
 
-
-
-
     Vector2 movement;
-
-    
+  
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,22 +54,18 @@ public class Player : MonoBehaviour
         GameObject.FindGameObjectWithTag("Weapon").GetComponent<Transform>().localScale = WeaponScaler;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Health"))
-        {
-            GetComponent<Health>().health += 50;
-            GameObject.FindGameObjectWithTag("HP").GetComponent<Image>().fillAmount += 0.5f;
-            Destroy(collision.gameObject);
-        }
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("DoorTrigger"))
         {
             doors.SetActive(true);
         }
+
+        if (other.CompareTag("Health"))
+        {
+            GetComponent<Health>().health += 50;
+            GameObject.FindGameObjectWithTag("HP").GetComponent<Image>().fillAmount += 0.5f;
+            Destroy(other.gameObject);
+        }
     }
-
-
 }
