@@ -157,7 +157,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.05
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -361,7 +361,7 @@ Transform:
   m_GameObject: {fileID: 320283113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0.03, z: 0}
+  m_LocalPosition: {x: 0.43000007, y: 0.030000083, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -439,7 +439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &476147226
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ Transform:
   m_GameObject: {fileID: 476147223}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.11, y: 0, z: -2}
+  m_LocalPosition: {x: 1.23, y: -1.24, z: -2}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  followSpeed: 2
+  followSpeed: 0
   damage: 25
   player: {fileID: 486924330}
 --- !u!114 &476147234
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0.7294118, b: 0, a: 1}
-  m_Intensity: 0.53
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 0.03
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1037,8 +1037,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0014500618, y: 0.0005502701, z: 0}
-    m_Extent: {x: 14.50535, y: 14.50395, z: 0}
+    m_Center: {x: 0.0029001236, y: -0.007249832, z: 0}
+    m_Extent: {x: 15.5023, y: 15.49975, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 14
+  m_ShapeLightFalloffSize: 15
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0.7294118, b: 0, a: 1}
-  m_Intensity: 0.53
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 0.03
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1119,8 +1119,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0022501945, y: 0.0017499924, z: 0}
-    m_Extent: {x: 14.497049, y: 14.50345, z: 0}
+    m_Center: {x: -0.0009999275, y: -0.006599903, z: 0}
+    m_Extent: {x: 15.5058, y: 15.4998, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 14
+  m_ShapeLightFalloffSize: 15
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -1146,7 +1146,7 @@ GameObject:
   - component: {fileID: 775038601}
   - component: {fileID: 775038600}
   m_Layer: 6
-  m_Name: S
+  m_Name: Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0.7294118, b: 0, a: 1}
-  m_Intensity: 0.53
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 0.03
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1529,8 +1529,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0034499168, y: 0.0030002594, z: 0}
-    m_Extent: {x: 14.50425, y: 14.4985, z: 0}
+    m_Center: {x: 0.0018000603, y: -0.0032000542, z: 0}
+    m_Extent: {x: 15.5016, y: 15.5012, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 14
+  m_ShapeLightFalloffSize: 15
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0.7294118, b: 0, a: 1}
-  m_Intensity: 0.53
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 0.03
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1611,8 +1611,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0029001236, y: -0.0001001358, z: 0}
-    m_Extent: {x: 14.4998, y: 14.5083, z: 0}
+    m_Center: {x: -0.00274992, y: -0.0014996529, z: 0}
+    m_Extent: {x: 15.500151, y: 15.504499, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 14
+  m_ShapeLightFalloffSize: 15
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0.7294118, b: 0, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 1
   m_LightVolumeIntensity: 0.03
   m_LightVolumeIntensityEnabled: 1
   m_ApplyToSortingLayers: 00000000
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 14
+  m_ShapeLightFalloffSize: 20
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}
@@ -2963,7 +2963,7 @@ GameObject:
   - component: {fileID: 1660563734}
   - component: {fileID: 1660563735}
   m_Layer: 0
-  m_Name: pixelmonster-32x32
+  m_Name: Monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3226,7 +3226,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1821206027}
+  - component: {fileID: 1821206032}
   - component: {fileID: 1821206029}
+  - component: {fileID: 1821206031}
   - component: {fileID: 1821206028}
   m_Layer: 0
   m_Name: Weapon
@@ -3248,8 +3250,8 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.9, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 320283114}
   - {fileID: 1487996134}
+  - {fileID: 320283114}
   m_Father: {fileID: 486924334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1821206028
@@ -3326,6 +3328,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1821206031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821206026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358460c82db3c5f4b96d34fa90a354ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossbow_sprite: {fileID: 21300000, guid: b540c77d976f0584aa1b7c9426e8930d, type: 3}
+  arrow_projectile: {fileID: 3349891514422651809, guid: c399d9f390850dc49afb677dde20ec2d, type: 3}
+  reloadStart: 2
+  shotPoint: {fileID: 320283114}
+--- !u!114 &1821206032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821206026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!1 &1851727290
 GameObject:
   m_ObjectHideFlags: 0
@@ -5286,11 +5318,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 523119587}
-  - {fileID: 1963346572}
   - {fileID: 486924334}
   - {fileID: 476147227}
+  - {fileID: 1963346572}
+  - {fileID: 1660563730}
   - {fileID: 775038601}
   - {fileID: 828692920}
-  - {fileID: 1660563730}
   - {fileID: 216892274}
   - {fileID: 45167777}
