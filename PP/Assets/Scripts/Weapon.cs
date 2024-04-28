@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Weapon : MonoBehaviour
 {
@@ -7,8 +8,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Sprite sawedOff_reload;
     [SerializeField] private Sprite sawedOff_fire;
 
-    public GameObject projectile;
-    public Transform shotPoint;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject muzzleFlash;
+    [SerializeField] private Transform shotPoint;
 
     [SerializeField] private float reloadStart;
     [SerializeField] private int pelletCount;
@@ -65,7 +67,9 @@ public class Weapon : MonoBehaviour
     IEnumerator MuzzleFlash()
     {
         shotPoint.GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.03f);
+        muzzleFlash.GetComponent<Light2D>().enabled = true;
+        yield return new WaitForSeconds(0.08f);
         shotPoint.GetComponent<SpriteRenderer>().enabled = false;
+        muzzleFlash.GetComponent<Light2D>().enabled = false;
     }
 }
