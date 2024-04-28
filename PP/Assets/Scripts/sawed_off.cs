@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Weapon : MonoBehaviour
+public class sawed_off : MonoBehaviour
 {
     [SerializeField] private Sprite sawedOff;
     [SerializeField] private Sprite sawedOff_reload;
@@ -70,4 +70,7 @@ public class Weapon : MonoBehaviour
         shotPoint.GetComponent<SpriteRenderer>().enabled = false;
         shotPoint.GetComponent<Light2D>().enabled = false;
     }
+
+
+    
 }
