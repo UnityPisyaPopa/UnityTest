@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class sawed_off : MonoBehaviour
+public class Sawed_off : MonoBehaviour
 {
     [SerializeField] private Sprite sawedOff;
     [SerializeField] private Sprite sawedOff_reload;
@@ -14,6 +14,7 @@ public class sawed_off : MonoBehaviour
     [SerializeField] private int pelletCount;
     [SerializeField] private float spreadAngle;
     [SerializeField] private int shotsCount;
+
     private float reload;
     private float spreadAngleStart;
     private float spreadAngleDifference;
@@ -25,7 +26,7 @@ public class sawed_off : MonoBehaviour
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
-        projectile.GetComponent<Transform>().rotation = transform.rotation;
+        projectile.transform.rotation = transform.rotation;
 
 
         if (reload <= 0)

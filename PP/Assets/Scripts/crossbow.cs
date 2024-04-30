@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class crossbow : MonoBehaviour
+public class Crossbow : MonoBehaviour
 {
     [SerializeField] private Sprite crossbow_sprite;
     [SerializeField] private GameObject arrow_projectile;
