@@ -45,7 +45,7 @@ public class WeaponController : MonoBehaviour
 
     private void SelectWeapon()
     {
-        int i = 0;
+        int i = 0; 
         foreach (Transform weapon in transform)
         {
             if (i == selectedWeapon)
