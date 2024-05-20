@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
         }
         else if(health <= 0)
         {
+            //StartCoroutine(timer());
             Destroy(gameObject);
         }
 
@@ -34,4 +36,9 @@ public class Health : MonoBehaviour
             GameObject.FindGameObjectWithTag("HP").GetComponent<Image>().fillAmount -= damage / 100f;
         }
     }
+    //IEnumerator timer()
+    //{
+    //    yield return new WaitForSeconds(0.03f);
+    //    Destroy(gameObject);
+    //}
 }
