@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7829cacc7f75ad14990e7722e56fc13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2374936272902282124, guid: 62b81556c5dea4d4e8076786de1b5227, type: 3}
+  projectile: {fileID: 7399697364708968356, guid: cd28d26582f88d14bac071777986203d, type: 3}
   shotPoint: {fileID: 2015781801}
   reloadStart: 6
   pelletCount: 8
@@ -363,7 +363,7 @@ MonoBehaviour:
   magazineSize: 0
   spreadAngleStart: 0
   spreadAngleDifference: 0
-  shotColldownEnded: 1
+  shotCooldownEnded: 1
   cartridgeLoaded: 1
   reloadStarted: 0
 --- !u!212 &74345879
@@ -1492,8 +1492,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0037503242, y: -0.0044498444, z: 0}
-    m_Extent: {x: 15.50485, y: 15.50315, z: 0}
+    m_Center: {x: -0.0000500679, y: 0.0027999878, z: 0}
+    m_Extent: {x: 15.50485, y: 15.5065, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1574,8 +1574,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0038003922, y: 0, z: 0}
-    m_Extent: {x: 15.4986, y: 15.4966, z: 0}
+    m_Center: {x: 0.0000500679, y: 0.0020503998, z: 0}
+    m_Extent: {x: 15.50355, y: 15.50595, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2148,8 +2148,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.006750107, y: -0.0023999214, z: 0}
-    m_Extent: {x: 15.50085, y: 15.5012, z: 0}
+    m_Center: {x: 0.006750107, y: 0.0051002502, z: 0}
+    m_Extent: {x: 15.50105, y: 15.5036, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2230,8 +2230,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0001001358, y: 0.0029501915, z: 0}
-    m_Extent: {x: 15.5048, y: 15.50415, z: 0}
+    m_Center: {x: 0.004099846, y: 0.0020999908, z: 0}
+    m_Extent: {x: 15.5033, y: 15.502, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sawedOff: {fileID: 21300000, guid: 946525c9aa5f15049bb9e334f6773d82, type: 3}
   sawedOff_reload: {fileID: 21300000, guid: 63661d8534d586d41b00981f2c19aee5, type: 3}
-  projectile: {fileID: 2374936272902282124, guid: 62b81556c5dea4d4e8076786de1b5227, type: 3}
+  projectile: {fileID: 4694714979125810792, guid: a795bb9181396e848bf28fdc0aaefd05, type: 3}
   shotPoint: {fileID: 320283114}
   reloadStart: 3
   pelletCount: 10
@@ -3482,7 +3482,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3492,7 +3492,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3502,7 +3502,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3512,7 +3512,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3522,7 +3522,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3532,7 +3532,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3542,9 +3542,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 892d4723499a9c248891ff0c8177cc3e, type: 2}
-  m_TileSpriteArray:
-  - m_RefCount: 6
-    m_Data: {fileID: 21300000, guid: 5773413e424d54c4a87d24e31bcc1e7f, type: 3}
+  m_TileSpriteArray: []
   m_TileMatrixArray:
   - m_RefCount: 6
     m_Data:
