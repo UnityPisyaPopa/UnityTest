@@ -70,8 +70,5 @@ public class Sawed_off : MonoBehaviour
         yield return new WaitForSeconds(0.08f);
         shotPoint.GetComponent<SpriteRenderer>().enabled = false;
         shotPoint.GetComponent<Light2D>().enabled = false;
-    }
-
-
-    
+    }    
 }

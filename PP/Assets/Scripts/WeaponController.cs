@@ -53,7 +53,8 @@ public class WeaponController : MonoBehaviour
                 weapon.gameObject.SetActive(true);
                 if (pumpShotgun != null)
                 {
-                    pumpShotgun.shotColldownEnded = true;
+                    pumpShotgun.shotCooldownEnded = true;
+                    pumpShotgun.cartridgeLoaded = true;
                 }
             }
             else

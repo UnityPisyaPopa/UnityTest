@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour
         {
             Flip();
             isFlipped = false;
-        }        
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
         cooldownEnded = true;
     }
 
-    public void Flip()
+    void Flip()
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;

@@ -17,9 +17,9 @@ public class PumpShotgun : MonoBehaviour
     [SerializeField] private float spreadAngleStart;
     [SerializeField] private float spreadAngleDifference;
 
-    public bool shotColldownEnded = true;
+    public bool shotCooldownEnded = true;
     private bool isLoading = false;
-    [SerializeField] private bool cartridgeLoaded = true;
+    public bool cartridgeLoaded = true;
     [SerializeField] private bool reloadStarted = false;
 
     private void Start()
@@ -37,10 +37,10 @@ public class PumpShotgun : MonoBehaviour
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
-        projectile.transform.rotation = transform.rotation;        
-        
-        if (Input.GetMouseButtonDown(0) && magazineSize > 0 && shotColldownEnded == true)
-        {   
+        projectile.transform.rotation = transform.rotation;
+
+        if (Input.GetMouseButtonDown(0) && magazineSize > 0 && shotCooldownEnded == true)
+        {
             reloadStarted = false;
             isLoading = false;
             StopCoroutine(LoadCartridge());
@@ -58,12 +58,12 @@ public class PumpShotgun : MonoBehaviour
 
             spreadAngle = spreadAngleStart;
             magazineSize--;
-        }   
+        }
         else if (reloadStarted == true && cartridgeLoaded == true && magazineSize < magazineSizeStart)
         {
             isLoading = true;
             StartCoroutine(LoadCartridge());
-        }                                                                        
+        }
     }
 
     IEnumerator MuzzleFlash()
@@ -77,13 +77,13 @@ public class PumpShotgun : MonoBehaviour
 
     IEnumerator ShotCooldown()
     {
-        shotColldownEnded = false;
+        shotCooldownEnded = false;
         yield return new WaitForSeconds(1 / fireRate);
-        shotColldownEnded = true;
+        shotCooldownEnded = true;
     }
 
     IEnumerator LoadCartridge()
-    {       
+    {
         cartridgeLoaded = false;
         yield return new WaitForSeconds(reloadStart / magazineSizeStart);
         if (isLoading)
