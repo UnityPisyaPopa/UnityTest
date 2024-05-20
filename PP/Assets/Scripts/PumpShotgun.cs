@@ -44,7 +44,6 @@ public class PumpShotgun : MonoBehaviour
             reloadStarted = false;
             isLoading = false;
             StopCoroutine(LoadCartridge());
-
             StartCoroutine(MuzzleFlash());
             StartCoroutine(ShotCooldown());
 
